@@ -1,0 +1,4 @@
+/raid/ckh/sandplay_homework/checkpoints/outputs/*
+/raid/ckh/sandplay_homework/checkpoints/state_dict/*
+/raid/ckh/sandplay_homework/checkpoints/tensorboard/*
+/raid/ckh/sandplay_homework/resource/homework_sand_label_datasets/*
