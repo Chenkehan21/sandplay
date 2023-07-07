@@ -1,0 +1,31 @@
+# config.yaml
+
+task:
+  name: sandplay_classification
+dataset:
+  img_dir_path: /raid/ckh/sandplay_homework/resource/homework_sand_label_datasets
+  img_names_path:  /raid/ckh/sandplay_homework/resource/new_file_namelist_infor.json
+  label_path: /raid/ckh/sandplay_homework/data/labels.csv
+  partition: 0.9
+  num_workers: 1
+model:
+  name: vit # vit/resnet18/cnn
+  pretrained: True
+  device: cuda
+  cnn_input_shape: [3, 224, 224]
+  num_classes: 6
+optimizer:
+  name: Adam #Adam/SGD （Momentum exists in SGD）
+  lr: 0.001
+  max_epochs: 100
+  checkpoint_period: 10
+train:
+  batch_size: 32
+  epochs: 200
+  log_interval: 1
+checkpoint:
+  state_dict_dir: /raid/ckh/sandplay_homework/checkpoints/state_dict
+  tensorboard_dir: /raid/ckh/sandplay_homework/checkpoints/tensorboard
+hydra:
+  run:
+    dir: /raid/ckh/sandplay_homework/checkpoints/outputs/${now:%Y-%m-%d}/${now:%H-%M-%S}
