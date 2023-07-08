@@ -6,7 +6,7 @@ from PIL import Image
 
 
 class SandplayDataset(Dataset):
-    def __init__(self, img_dir_path, img_names_path, label_path, partition:float, transforms=None, is_train=True) -> None:
+    def __init__(self, img_dir_path, img_names_path, label_path, partition:float, transforms=None, is_train=True, is_test=False) -> None:
         super().__init__()
         self.img_dir_path = img_dir_path
         with open(img_names_path, 'r') as f:
@@ -14,6 +14,8 @@ class SandplayDataset(Dataset):
         partition = int(partition * len(img_names["train_file"]))
         if is_train:
             self.img_names = img_names["train_file"][:partition]
+        elif is_test:
+            self.img_names = img_names["test_file"]
         else:
             self.img_names = img_names["train_file"][partition:]
         self.label_df = pd.read_csv(label_path)

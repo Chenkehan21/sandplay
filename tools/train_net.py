@@ -18,8 +18,8 @@ from utils.logger import setup_logger
 def train(cfg, logger):
     model = build_model(cfg)
     optimizer = build_optimizer(cfg, model)
-    train_loader = build_dataloader(cfg, is_train=True)
-    val_loader = build_dataloader(cfg, is_train=False)
+    train_loader = build_dataloader(cfg, is_train=True, is_test=False)
+    val_loader = build_dataloader(cfg, is_train=False, is_test=False)
 
     do_train(
         cfg,

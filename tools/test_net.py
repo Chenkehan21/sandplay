@@ -13,9 +13,7 @@ def main(cfg: DictConfig):
     model = build_model(cfg)
     checkpoint = torch.load(cfg.test.weight)
     Checkpoint.load_objects(to_load={"model": model}, checkpoint=checkpoint)
-    # import pdb; pdb.set_trace()
-    # model.load_state_dict(torch.load(cfg.test.weight))
-    val_loader = build_dataloader(cfg, is_train=False)
+    val_loader = build_dataloader(cfg, is_train=False, is_test=True)
 
     inference(cfg, model, val_loader)
 
