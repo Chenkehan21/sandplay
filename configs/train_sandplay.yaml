@@ -23,6 +23,8 @@ train:
   batch_size: 32
   epochs: 200
   log_interval: 1
+test:
+  weight: "/raid/ckh/sandplay_homework/checkpoints/state_dict/2023-07-06_22-07-17/sandplay_vit_checkpoint_accuracy=0.6842.pt"
 checkpoint:
   state_dict_dir: /raid/ckh/sandplay_homework/checkpoints/state_dict
   tensorboard_dir: /raid/ckh/sandplay_homework/checkpoints/tensorboard

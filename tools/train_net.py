@@ -9,7 +9,7 @@ import torch.nn as nn
 import sys
 sys.path.append('../')
 from data import build_dataloader
-from engine.trainer import do_train
+from engine import do_train
 from model import build_model
 from optimizer import build_optimizer
 from utils.logger import setup_logger
@@ -34,7 +34,6 @@ def train(cfg, logger):
 
 @hydra.main(version_base=None, config_path="/raid/ckh/sandplay_homework/configs", config_name="train_sandplay.yaml")
 def main(cfg: DictConfig):
-    to_absolute_path("/raid/ckh/sandplay_homework/checkpoints")
     num_gpus = int(os.environ["WORLD_SIZE"]) if "WORLD_SIZE" in os.environ else 1
     # import pdb;pdb.set_trace()
     output_dir = cfg.checkpoint.state_dict_dir
